@@ -1,0 +1,6 @@
+@Techoration.API_HostAddress = http://localhost:5172
+
+GET {{Techoration.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
