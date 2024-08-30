@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Techoration.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00bf3c068798ec27675326fd198f52cf73737d6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Techoration.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Techoration.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
