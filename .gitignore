@@ -1,4 +1,4 @@
 API/Techoration.API/.vs/
 API/Techoration.API/Techoration.API/bin/
-API/Techoration.API/Techoration.API/bin/obj/
+API/Techoration.API/Techoration.API/obj/
 *.obj 	# ignore any files with .obj postfix
