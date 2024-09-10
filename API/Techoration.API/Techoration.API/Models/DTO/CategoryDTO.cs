@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Techoration.API.Models.Domain
+namespace Techoration.API.Models.DTO
 {
-    public class Category
+    public class CategoryDTO
     {
         public Guid Id { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SerialNo { get; set; }
 
         public string Name { get; set; }

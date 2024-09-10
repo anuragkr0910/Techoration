@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using Techoration.API.Data;
+using Techoration.API.Repositories.Implementation;
+using Techoration.API.Repositories.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("TechorationConnectionString"));
 });
+
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 var app = builder.Build();
 

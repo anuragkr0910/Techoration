@@ -1,8 +1,13 @@
-﻿namespace Techoration.API.Models.Domain
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Techoration.API.Models.Domain
 {
     public class BlogPost
     {
-        public Guid Id { get; set; } 
+        public Guid Id { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int SerialNo { get; set; }
 
         public string Title { get; set; }
 
