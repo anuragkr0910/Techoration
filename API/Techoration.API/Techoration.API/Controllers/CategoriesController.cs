@@ -19,7 +19,7 @@ namespace Techoration.API.Controllers
             this.categoryRepository = categoryRepository;
         }
 
-        //
+        // POST: /api/categories
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateCategoryRequestDTO requestDTO)
         {
@@ -37,11 +37,31 @@ namespace Techoration.API.Controllers
             {
                 Id = category.Id,
                 Name = category.Name,
-                URLHandle = category.URLHandle,
-                SerialNo = category.SerialNo
+                URLHandle = category.URLHandle
             };
 
             return Ok(response);
+        }
+
+
+        // GET: /api/categories
+        [HttpGet]
+        public async Task<IActionResult> GetAllCategory()
+        {
+            var categories = await categoryRepository.GetAllAsync();
+
+            var response = new List<CategoryDTO>();
+
+            foreach (var category in categories)
+            {
+                response.Add(new CategoryDTO()
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                    URLHandle = category.URLHandle                   
+                });              
+            }
+            return Ok(response);            
         }
     }
 }

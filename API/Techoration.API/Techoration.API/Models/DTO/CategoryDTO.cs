@@ -6,8 +6,6 @@ namespace Techoration.API.Models.DTO
     {
         public Guid Id { get; set; }
 
-        public int SerialNo { get; set; }
-
         public string Name { get; set; }
 
         public string URLHandle { get; set; }
