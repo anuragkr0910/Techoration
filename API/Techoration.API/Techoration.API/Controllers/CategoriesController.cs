@@ -21,7 +21,7 @@ namespace Techoration.API.Controllers
 
         // POST: /api/categories
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(CreateCategoryRequestDTO requestDTO)
+        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequestDTO requestDTO)
         {
             // Map Request DTO to Domain Model
             var category = new Category()
@@ -62,6 +62,58 @@ namespace Techoration.API.Controllers
                 });              
             }
             return Ok(response);            
+        }
+
+
+        // GET: /api/Categories/{id}
+        [HttpGet]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> GetCategoryByID([FromRoute] Guid id)
+        {
+            var category = await categoryRepository.GetCategoryById(id);
+
+            if (category is null)
+            {
+                return NotFound();
+            }
+
+            var response = new CategoryDTO()
+            {
+                Id = category.Id,
+                Name = category.Name,
+                URLHandle = category.URLHandle
+            };
+            return Ok(response);
+        }
+
+
+        // PUT: /api/Categories/{id}
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> UpdateCategory([FromRoute] Guid id, [FromBody] UpdateCategoryRequestDTO requestDTO)
+        {
+            var category = new Category()
+            {
+                Id = id,
+                Name = requestDTO.Name,
+                URLHandle = requestDTO.URLHandle
+            };
+
+            category = await categoryRepository.UpdateAsync(category);
+
+            if (category is null)
+            { 
+                return NotFound();
+            }
+
+            var response = new CategoryDTO()
+            {
+                Id = category.Id,
+                Name = category.Name,
+                URLHandle = category.URLHandle
+            };
+
+            return Ok(response);
         }
     }
 }

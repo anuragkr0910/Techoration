@@ -25,5 +25,25 @@ namespace Techoration.API.Repositories.Implementation
         {
             return await dbContext.Categories.ToListAsync();
         }
+
+        public async Task<Category?> GetCategoryById(Guid id)
+        {
+           return await dbContext.Categories.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task<Category?> UpdateAsync(Category category)
+        {
+            var existingCategory = await dbContext.Categories.FirstOrDefaultAsync(c => c.Id == category.Id);
+
+            if (existingCategory != null)
+            {
+                // dbContext.Entry(existingCategory).CurrentValues.SetValues(category);
+                existingCategory.Name = category.Name;
+                existingCategory.URLHandle = category.URLHandle;
+                await dbContext.SaveChangesAsync();
+                return existingCategory;
+            }
+            return null;
+        }
     }
 }
